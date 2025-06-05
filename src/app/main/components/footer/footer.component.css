@@ -1,0 +1,10 @@
+.footer-modern {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+  }
+  
+  .footer-modern a:hover {
+    color: #007bff !important;
+    text-decoration: underline;
+  }

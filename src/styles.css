@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+.bg-primary {
+  background-color: #087d79 !important;
+}
+
+.text-primary {
+  color: #087d79 !important;
+}
+
+.btn-primary {
+  background-color: #087d79;
+  border-color: #087d79;
+}
+
+.btn-primary:hover {
+  background-color: #066b67;
+  border-color: #066b67;
+}
+
+.bg-wave {
+  background-color: #c9fef5;
+}
+
+.form-control:focus {
+  border-color: #087d79;
+  box-shadow: 0 0 0 0.25rem rgba(8, 125, 121, 0.25);
+}
+
+.btn-outline-secondary {
+  border-color: #ced4da;
+  color: #087d79;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #c9fef5;
+  border-color: #087d79;
+}
+
+.bg-white.bg-opacity-10 {
+  background-color: rgba(201, 254, 245, 0.1) !important;
+}

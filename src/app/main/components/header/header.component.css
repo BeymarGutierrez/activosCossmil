@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #087d79;
+  --secondary-color: #c9fef5;
+}
+
+.navbar {
+  background-color: white !important;
+}
+
+.nav-link.active {
+  color: var(--primary-color) !important;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #06615d;
+  border-color: #05504d;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+.dropdown-item:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}

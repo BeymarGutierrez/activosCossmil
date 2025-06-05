@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm border-bottom py-2">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold text-primary d-flex align-items-center">
+      <img
+        src="assets/logo.png"
+        alt="Logo de Citas Médicas"
+        width="28"
+        height="28"
+        class="me-2"
+      />
+      <span class="fs-5"
+        ><i class="bi bi-heart-pulse-fill me-1"></i> Plantilla</span
+      >
+    </a>
+
+    <button
+      class="navbar-toggler border-0 shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link fw-medium px-3 py-2 rounded-3 hover-effect"
+            [routerLink]="'/main'"
+            routerLinkActive="active bg-light"
+          >
+            <i class="bi bi-house-door-fill me-1"></i> Inicio
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle fw-medium px-3 py-2 rounded-3 hover-effect"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-gear-fill me-1"></i> Operaciones
+          </a>
+          <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 hover-effect"
+                [routerLink]="'/main/citas'"
+              >
+                opcion 1
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 hover-effect"
+                [routerLink]="'/main/citas'"
+              >
+                opcion 2
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+        <a
+          class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center hover-effect"
+          style="width: 40px; height: 40px"
+          title="Perfil"
+        >
+          <i class="bi bi-person-circle fs-5"></i>
+        </a>
+        <button
+          class="btn btn-primary rounded-pill px-4 py-2 fw-medium hover-effect"
+          style="background-color: #087d79; border-color: #087d79"
+        >
+          <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .hover-effect {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .hover-effect:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-link {
+    color: #495057;
+  }
+
+  .nav-link:hover {
+    color: #087d79;
+  }
+
+  .nav-link.active {
+    color: #087d79;
+    background-color: rgba(8, 125, 121, 0.1) !important;
+  }
+</style>
