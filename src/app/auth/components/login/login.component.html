@@ -1,144 +1,96 @@
-<div class="bg-wave">
+<div class="login-bg d-flex justify-content-center align-items-center vh-100">
   <div
-    class="container d-flex justify-content-center align-items-center vh-100"
+    class="login-card p-4 p-md-5 mx-2 mx-md-0 shadow rounded-4 bg-white position-relative"
+    style="max-width: 520px; width: 100%"
   >
-    <div
-      class="row shadow-lg rounded-4 overflow-hidden"
-      style="max-width: 900px; width: 100%"
-    >
-      <div class="col-md-6 p-5 bg-white">
-        <div class="text-center mb-4">
-          <img src="assets/logo.png" alt="Logo" width="80" class="mb-3" />
-          <h4 class="fw-bold text-primary">
-            <i class="bi bi-heart-pulse me-2"></i>Accede a tu cuenta
-          </h4>
-          <p class="text-muted small">Ingresa tus credenciales</p>
-        </div>
-
-        @if (errorMessage()) {
-        <div class="alert alert-danger small mb-4">
-          {{ errorMessage() }}
-        </div>
-        }
-
-        <form (ngSubmit)="iniciarSesion()">
-          <div class="mb-3">
-            <label class="form-label small fw-bold text-muted">Usuario</label>
-            <div class="input-group">
-              <span class="input-group-text bg-light">
-                <i class="bi bi-person text-primary"></i>
-              </span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Nombre de usuario"
-                [(ngModel)]="credentials().usuario"
-                name="usuario"
-                required
-                [class.is-invalid]="errorMessage() && !credentials().usuario"
-                [disabled]="isLoading()"
-              />
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label small fw-bold text-muted"
-              >Contraseña</label
-            >
-            <div class="input-group">
-              <span class="input-group-text bg-light">
-                <i class="bi bi-shield-lock text-primary"></i>
-              </span>
-              <input
-                [type]="showPassword() ? 'text' : 'password'"
-                class="form-control"
-                placeholder="Ingresa tu contraseña"
-                [(ngModel)]="credentials().pwd"
-                name="pwd"
-                required
-                [class.is-invalid]="errorMessage() && !credentials().pwd"
-                [disabled]="isLoading()"
-              />
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                (click)="togglePassword()"
-                [disabled]="isLoading()"
-              >
-                <i
-                  [class]="showPassword() ? 'bi bi-eye-slash' : 'bi bi-eye'"
-                ></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="rememberMe" />
-              <label class="form-check-label small text-muted" for="rememberMe">
-                Recordar mi sesión
-              </label>
-            </div>
-            <a href="#" class="text-decoration-none small text-primary">
-              ¿Olvidaste tu contraseña?
-            </a>
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-primary w-100 mb-3 py-2 fw-bold"
-            [disabled]="isLoading()"
-          >
-            @if (isLoading()) {
-            <span class="spinner-border spinner-border-sm me-2"></span>
-            Procesando... } @else {
-            <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar sesión }
-          </button>
-
-          <div class="text-center small mt-4">
-            ¿No tienes una cuenta?
-            <a href="#" class="text-decoration-none text-primary fw-bold ms-1">
-              Regístrate ahora
-            </a>
-          </div>
-        </form>
-      </div>
-
-      <div
-        class="col-md-6 d-none d-md-flex bg-primary text-white position-relative p-0"
-      >
-        <div
-          class="w-100 h-100 d-flex flex-column justify-content-center p-5 position-relative z-1"
-        >
-          <div class="text-center px-4">
-            <div class="bg-white bg-opacity-10 p-4 rounded-4 mb-4">
-              <i class="bi bi-calendar-check display-4"></i>
-            </div>
-            <h4 class="fw-bold mb-3">Agenda tus citas médicas</h4>
-            <p class="small opacity-75">
-              Accede a tu panel personalizado para gestionar citas, ver
-              historial médico y recibir recordatorios automáticos.
-            </p>
-            <ul class="list-unstyled small mt-4 text-start opacity-75">
-              <li class="mb-2">
-                <i class="bi bi-check-circle me-2"></i>Acceso 24/7
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-check-circle me-2"></i>Historial completo
-              </li>
-              <li>
-                <i class="bi bi-check-circle me-2"></i>Notificaciones en tiempo
-                real
-              </li>
-            </ul>
-          </div>
-        </div>
-        <img
-          src="assets/fondo.webp"
-          alt="Ilustración médica"
-          class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-15"
-        />
-      </div>
+    <div class="logo-wrapper">
+      <img src="assets/logo.png" alt="Logo COSSMIL" class="logo-img" />
     </div>
+
+    <div class="text-center mt-4 mb-4">
+      <h2 class="fw-bold text-primary">COSSMIL</h2>
+    </div>
+
+    @if (errorMessage()) {
+    <div class="alert alert-danger small mb-4" role="alert">
+      {{ errorMessage() }}
+    </div>
+    }
+
+    <form (ngSubmit)="iniciarSesion()" novalidate>
+      <div class="mb-3">
+        <label for="usuario" class="form-label fw-bold"
+          >Correo Electrónico</label
+        >
+        <div class="input-group">
+          <span class="input-group-text bg-white"
+            ><i class="bi bi-envelope text-primary"></i
+          ></span>
+          <input
+            type="email"
+            id="usuario"
+            class="form-control"
+            placeholder="Correo Electrónico"
+            [(ngModel)]="credentials().usuario"
+            name="usuario"
+            required
+            [class.is-invalid]="errorMessage() && !credentials().usuario"
+            [disabled]="isLoading()"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="pwd" class="form-label fw-bold">Contraseña</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white"
+            ><i class="bi bi-lock text-primary"></i
+          ></span>
+          <input
+            [type]="showPassword() ? 'text' : 'password'"
+            id="pwd"
+            class="form-control"
+            placeholder="Contraseña"
+            [(ngModel)]="credentials().pwd"
+            name="pwd"
+            required
+            [class.is-invalid]="errorMessage() && !credentials().pwd"
+            [disabled]="isLoading()"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="togglePassword()"
+            [disabled]="isLoading()"
+            tabindex="-1"
+            aria-label="Mostrar/ocultar contraseña"
+          >
+            <i [class]="showPassword() ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe" />
+          <label class="form-check-label small" for="rememberMe">
+            Recuérdame
+          </label>
+        </div>
+        <a href="#" class="small text-decoration-none text-primary">
+          Olvidé mi contraseña
+        </a>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100 py-2 fw-bold"
+        [disabled]="isLoading()"
+      >
+        @if (isLoading()) {
+        <span class="spinner-border spinner-border-sm me-2"></span>
+        Procesando... } @else { Iniciar Sesión }
+      </button>
+    </form>
   </div>
 </div>

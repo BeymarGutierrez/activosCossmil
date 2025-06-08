@@ -37,7 +37,7 @@ export class LoginComponent {
 
       this.authService.auth(this.credentials()).subscribe({
         next: (response) => {
-          if (response && response.access_token) { // Verifica que la respuesta contiene información válida
+          if (response && response.access_token) {
             this.sessionService.setSession('user', response);
             console.log(this.credentials());
             this.router.navigate(['/main']);
@@ -47,10 +47,11 @@ export class LoginComponent {
         },
         error: (error) => {
           this.errorMessage.set(this.handleError(error));
+          this.isLoading.set(false);
         },
         complete: () => {
           this.isLoading.set(false);
-        }
+        },
       });
     }
   }

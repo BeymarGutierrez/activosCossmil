@@ -1,32 +1,3 @@
-// import { inject, Injectable } from '@angular/core';
-// import { EncdecService } from '../../core/services/encdec.service';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class SessionService {
-//   private encdecService = inject(EncdecService);
-//   constructor() {}
-//   setSession(key: string, value: any) {
-//     let valueString = JSON.stringify(value);
-//     let enc = this.encdecService.encrypt(valueString);
-//     sessionStorage.setItem(key, enc);
-//   }
-//   getSession(key: string) {
-//     let user = JSON.parse(
-//       this.encdecService.decrypt(sessionStorage.getItem(key))
-//     );
-//     return user;
-//   }
-//   clearSession() {
-//     sessionStorage.clear();
-//   }
-//   removeSession(key: string) {
-//     sessionStorage.removeItem(key);
-//   }
-// }
-
-
 import { inject, Injectable } from '@angular/core';
 import { EncdecService } from '../../core/services/encdec.service';
 
@@ -35,40 +6,55 @@ import { EncdecService } from '../../core/services/encdec.service';
 })
 export class SessionService {
   private encdecService = inject(EncdecService);
-  
+
   constructor() {}
-  
+
   setSession(key: string, value: any) {
+    console.log('Valor a guardar:', value);
+
     const valueString = JSON.stringify(value);
     const enc = this.encdecService.encrypt(valueString);
     sessionStorage.setItem(key, enc);
+
+    console.log('Sesión guardada exitosamente');
   }
-  
+
   getSession(key: string) {
+    console.log('Obteniendo sesión - Key:', key);
+
     const encryptedValue = sessionStorage.getItem(key);
     if (!encryptedValue) {
+      console.log('No se encontró sesión para la key:', key);
       return null;
     }
-    
+
     try {
       const decryptedValue = this.encdecService.decrypt(encryptedValue);
-      return JSON.parse(decryptedValue);
+      const parsedValue = JSON.parse(decryptedValue);
+      console.log('Sesión obtenida exitosamente:', parsedValue);
+      return parsedValue;
     } catch (error) {
       console.error('Error al desencriptar/parsear la sesión:', error);
-      this.removeSession(key); // Elimina datos de sesión inválidos
+      this.removeSession(key);
       return null;
     }
   }
-  
+
   clearSession() {
+    console.log('Limpiando todas las sesiones');
     sessionStorage.clear();
+    console.log('Sesiones limpiadas exitosamente');
   }
-  
+
   removeSession(key: string) {
+    console.log('Eliminando sesión - Key:', key);
     sessionStorage.removeItem(key);
+    console.log('Sesión eliminada exitosamente');
   }
-  
+
   hasSession(key: string): boolean {
-    return sessionStorage.getItem(key) !== null;
+    const hasSession = sessionStorage.getItem(key) !== null;
+    console.log('Verificando sesión - Key:', key, '- Existe:', hasSession);
+    return hasSession;
   }
 }
