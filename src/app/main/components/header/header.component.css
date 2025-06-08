@@ -97,21 +97,31 @@
   color: #dc3545 !important;
 }
 
-.user-info-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-  align-items: baseline;
+.user-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2rem; /* Espacio entre las filas de nombre y usuario */
 }
 
 .user-info-label {
-  font-weight: 500;
-  text-align: right;
+  font-weight: normal; /* Texto normal para etiquetas como 'Nombre:' y 'Usuario:' */
+  margin-right: 0.5rem; /* Espacio entre etiqueta y valor */
 }
 
 .user-info-value {
-  text-align: left;
+  font-weight: bold; /* Texto en negrita para los valores como el nombre y el usuario */
+  text-align: right; /* Alinea los valores a la derecha */
+  flex-grow: 1; /* Permite que el valor ocupe el espacio restante */
+}
+
+.user-info-area-rol-label {
+  font-weight: bold; /* Etiquetas de 'Área:' y 'Rol:' en negrita */
+  margin-top: 0.5rem; /* Espacio superior para separar */
+  margin-bottom: 0.2rem;
+}
+
+.user-info-area-rol-value {
+  font-weight: normal; /* Valores de área y rol con texto normal */
   word-wrap: break-word;
 }
 
@@ -120,12 +130,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Asegura que el círculo no se encoja */
 }
 
 .dropdown-menu .rounded-circle .bi {
-  line-height: 1;
-  font-size: 1.6rem;
+  font-size: 1.6rem; /* Mantenemos este tamaño, o se puede ajustar si es necesario */
   vertical-align: middle;
 }
 
@@ -141,5 +150,4 @@
 }
 
 .bi {
-  line-height: 1;
 }
